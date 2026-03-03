@@ -67,6 +67,15 @@ footer {
 }
 
 #contenido.visible,
+#ubicacion.visible,
+#galeria.visible,
+footer.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#contenido.visible,
 .section.visible,
 footer.visible {
   opacity: 1;
@@ -126,23 +135,21 @@ footer.visible {
 
 .seal {
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #c6a23a 0%, #a67c1f 40%, #7a5a12 75%, #5c430d 100%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50% 45% 55% 48%;
+    background: radial-gradient(circle at 30% 25%, #e0b84f 0%, #c9972b 30%, #9c6f1a 65%, #7a5513 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: #fff8e1;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.35), inset 0 2px 6px rgba(255,255,255,0.25), inset 0 -4px 8px rgba(0,0,0,0.4);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff6d5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.35), inset 0 3px 5px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.45);
     z-index: 10;
 }
 
