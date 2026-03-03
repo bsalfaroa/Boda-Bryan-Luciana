@@ -9,81 +9,117 @@
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  background: #f5f5f2;
+  background: #f3efe8;
   color: #444;
   text-align: center;
   overflow-x: hidden;
+  transition: background 1.5s ease;
 }
 
+body.opened {
+  background: #f8f5f0;
+}
+
+/* HERO oculto inicialmente */
 .hero {
   background-image: url('foto-portada.jpg');
   background-size: cover;
   background-position: center;
-  padding: 120px 20px;
+  padding: 140px 20px;
   color: white;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.5s ease;
+}
+
+.hero.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 60px;
+  font-size: 65px;
   margin: 0;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .section {
   padding: 60px 20px;
 }
 
-/* ===== SOBRE MEJORADO ===== */
+/* ===== SOBRE PREMIUM ===== */
 .envelope-container {
-  perspective: 1000px;
-  width: 300px;
-  height: 200px;
-  margin: 50px auto;
+  perspective: 1200px;
+  width: 320px;
+  height: 220px;
+  margin: 100px auto;
   position: relative;
   cursor: pointer;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .envelope-container.fade-out {
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0.95);
   pointer-events: none;
 }
 
+/* textura tipo lino */
 .envelope-base {
   width: 100%;
   height: 100%;
-  background: #f1e9dc;
-  border-radius: 6px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f1e7d8,
+    #f1e7d8 2px,
+    #ede2d2 2px,
+    #ede2d2 4px
+  );
+  border-radius: 8px;
   position: absolute;
   bottom: 0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .envelope-flap {
   width: 100%;
   height: 100%;
-  background: #e8decd;
+  background: repeating-linear-gradient(
+    -45deg,
+    #e8dcc8,
+    #e8dcc8 2px,
+    #e2d5c0 2px,
+    #e2d5c0 4px
+  );
   position: absolute;
   top: 0;
   clip-path: polygon(0 0, 100% 0, 50% 70%);
   transform-origin: top;
-  transition: transform 1s ease;
+  transition: transform 1.2s ease;
   z-index: 3;
 }
 
+/* sello dorado realista */
 .seal {
-  width: 60px;
-  height: 60px;
-  background: gold;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #fff3b0, #d4af37, #a67c00);
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  top: 65%;
+  top: 68%;
   transform: translate(-50%, -50%);
   z-index: 4;
-  box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
-  transition: opacity 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff8dc;
+  font-family: 'Playfair Display', serif;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3);
+  transition: opacity 0.6s ease;
 }
 
 .envelope-container.open .envelope-flap {
@@ -98,7 +134,7 @@ body {
 #contenido {
   opacity: 0;
   transform: translateY(50px);
-  transition: all 1.2s ease;
+  transition: all 1.5s ease;
 }
 
 #contenido.visible {
@@ -114,32 +150,30 @@ body {
 .button {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 25px;
-  background-color: #6c8f76;
+  padding: 14px 28px;
+  background: linear-gradient(45deg, #b8962e, #e6c35c);
   color: white;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 40px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .gallery img {
   width: 90%;
-  max-width: 300px;
-  margin: 10px;
-  border-radius: 15px;
+  max-width: 320px;
+  margin: 12px;
+  border-radius: 20px;
 }
 
 footer {
-  padding: 30px;
+  padding: 40px;
   font-size: 14px;
-  background: #eaeaea;
+  background: #eae3d8;
 }
 </style>
 </head>
 <body>
-
-<div class="hero">
-  <h1>Bryan & Luciana</h1>
-</div>
 
 <div class="section" id="intro">
   <p>Haz clic en el sobre para abrir la invitación</p>
@@ -147,8 +181,12 @@ footer {
   <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
     <div class="envelope-base"></div>
     <div class="envelope-flap"></div>
-    <div class="seal"></div>
+    <div class="seal">B & L</div>
   </div>
+</div>
+
+<div class="hero" id="hero">
+  <h1>Bryan & Luciana</h1>
 </div>
 
 <div id="contenido" class="section">
@@ -182,19 +220,22 @@ function abrirInvitacion() {
   const contenido = document.getElementById('contenido');
   const musica = document.getElementById('musica');
   const intro = document.getElementById('intro');
+  const hero = document.getElementById('hero');
 
+  document.body.classList.add('opened');
   sobre.classList.add('open');
 
   setTimeout(() => {
     sobre.classList.add('fade-out');
-  }, 900);
+  }, 1000);
 
   setTimeout(() => {
     intro.style.display = 'none';
+    hero.classList.add('visible');
     contenido.classList.add('visible');
-    window.scrollTo({ top: contenido.offsetTop - 50, behavior: 'smooth' });
+    window.scrollTo({ top: hero.offsetTop, behavior: 'smooth' });
     musica.play();
-  }, 1500);
+  }, 1700);
 }
 
 // Cuenta regresiva
