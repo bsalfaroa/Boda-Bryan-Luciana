@@ -57,7 +57,8 @@ body.opened {
 
 /* Ocultar TODO el contenido hasta abrir */
 #contenido,
-.section:not(#intro),
+#ubicacion,
+#galeria,
 footer {
   opacity: 0;
   visibility: hidden;
@@ -124,7 +125,9 @@ footer.visible {
 
 .seal {
     position: absolute;
-    bottom: -45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     left: 50%;
     transform: translateX(-50%);
     width: 95px;
