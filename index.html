@@ -14,30 +14,32 @@ body{
   background:#f3efe8;
   color:#444;
   text-align:center;
-  overflow-x:hidden;
+  overflow:hidden; /* BLOQUEA SCROLL */
 }
 
-/* LAURELES LATERALES */
+/* ===== LAURELES COMPLETOS ===== */
 body::before,
 body::after{
   content:"";
   position:fixed;
   top:0;
-  width:90px;
-  height:100%;
+  width:100px;
+  height:100vh;
   background:
-    radial-gradient(circle at 40% 20%, rgba(120,140,90,0.35) 8px, transparent 9px),
-    radial-gradient(circle at 60% 40%, rgba(120,140,90,0.35) 8px, transparent 9px),
-    radial-gradient(circle at 50% 70%, rgba(120,140,90,0.35) 8px, transparent 9px);
-  background-size:60px 120px;
-  background-repeat:repeat-y;
+    radial-gradient(circle at 50% 5%, rgba(120,140,90,0.4) 10px, transparent 11px),
+    radial-gradient(circle at 40% 20%, rgba(120,140,90,0.4) 10px, transparent 11px),
+    radial-gradient(circle at 60% 35%, rgba(120,140,90,0.4) 10px, transparent 11px),
+    radial-gradient(circle at 45% 50%, rgba(120,140,90,0.4) 10px, transparent 11px),
+    radial-gradient(circle at 55% 65%, rgba(120,140,90,0.4) 10px, transparent 11px),
+    radial-gradient(circle at 50% 80%, rgba(120,140,90,0.4) 10px, transparent 11px);
+  background-repeat:no-repeat;
   pointer-events:none;
   z-index:0;
 }
 body::before{ left:0; }
 body::after{ right:0; transform:scaleX(-1); }
 
-/* OCULTO HASTA ABRIR */
+/* CONTENIDO OCULTO */
 .hero,
 .section,
 footer{
@@ -73,7 +75,6 @@ footer{
   pointer-events:none;
 }
 
-/* TEXTO ARRIBA */
 #intro p{
   font-family:'Great Vibes',cursive;
   font-size:32px;
@@ -158,9 +159,10 @@ footer{
 
 .hero h1{
   font-family:'Great Vibes',cursive;
-  font-size:64px;
-  color:#000;
-  text-shadow:0 3px 10px rgba(0,0,0,0.2);
+  font-size:70px;
+  color:white;
+  -webkit-text-stroke:2px black;
+  text-shadow:0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* SECCIONES */
@@ -178,7 +180,7 @@ footer{
   margin-top:15px;
 }
 
-/* BOTONES VERTICALES */
+/* BOTONES */
 .button{
   display:block;
   margin:20px auto;
@@ -269,6 +271,7 @@ function abrirInvitacion(){
 
   setTimeout(()=>{
     intro.style.display="none";
+    document.body.style.overflow="auto"; // ACTIVA SCROLL
     document.getElementById('hero').classList.add('visible');
     document.getElementById('info').classList.add('visible');
     document.getElementById('footer').classList.add('visible');
