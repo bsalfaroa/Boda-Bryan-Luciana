@@ -5,320 +5,256 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bryan & Luciana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-
 body{
-margin:0;
-background:#f3efe8;
-font-family:'Playfair Display',serif;
-color:#2e2e2e;
-overflow-x:hidden;
-scroll-behavior:smooth;
+  margin:0;
+  font-family:'Playfair Display',serif;
+  background:#f3efe8;
+  color:#444;
+  text-align:center;
+  overflow-x:hidden;
 }
 
-/* SOBRE */
+/* ===== LAURELES LATERALES ===== */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  top:0;
+  width:90px;
+  height:100%;
+  background:
+    radial-gradient(circle at 40% 20%, rgba(120,140,90,0.35) 8px, transparent 9px),
+    radial-gradient(circle at 60% 40%, rgba(120,140,90,0.35) 8px, transparent 9px),
+    radial-gradient(circle at 50% 70%, rgba(120,140,90,0.35) 8px, transparent 9px);
+  background-size:60px 120px;
+  background-repeat:repeat-y;
+  pointer-events:none;
+  z-index:0;
+}
+body::before{ left:0; }
+body::after{ right:0; transform:scaleX(-1); }
 
-#envelope-container{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-start;
-padding-top:80px;
-background:#f3efe8;
-z-index:10;
+/* BORDE MORADO INFERIOR */
+footer{
+  background:#eae3d8;
+  border-top:6px solid #7c5a92;
+  padding:40px;
+  font-size:14px;
 }
 
-#instruction{
-font-family:'Great Vibes',cursive;
-font-size:34px;
-color:#b48a3a;
-text-align:center;
-margin-bottom:35px;
+/* INTRO */
+#intro{
+  margin-top:60px;
 }
 
-#instruction:after{
-content:"";
-display:block;
-width:120px;
-height:1px;
-background:#b48a3a;
-margin:10px auto 0 auto;
-opacity:0.6;
+#intro p{
+  font-family:'Great Vibes',cursive;
+  font-size:28px;
+  margin-bottom:30px;
+  text-align:center;
 }
 
-.envelope{
-width:420px;
-height:250px;
-background:#e6dccd;
-position:relative;
-cursor:pointer;
-border-radius:6px;
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
-overflow:hidden;
+/* ===== SOBRE ===== */
+.envelope-container{
+  perspective:1200px;
+  width:320px;
+  height:220px;
+  margin:40px auto;
+  position:relative;
+  cursor:pointer;
 }
 
-.flap{
-position:absolute;
-top:0;
-width:100%;
-height:100%;
-background:#d9ccb8;
-clip-path:polygon(0 0,100% 0,50% 55%);
-transition:1s ease;
-transform-origin:top;
+.envelope-base{
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
+    45deg,
+    #f1e7d8,
+    #f1e7d8 2px,
+    #ede2d2 2px,
+    #ede2d2 4px
+  );
+  border-radius:8px;
+  position:absolute;
+  bottom:0;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.envelope-flap{
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
+    -45deg,
+    #e8dcc8,
+    #e8dcc8 2px,
+    #e2d5c0 2px,
+    #e2d5c0 4px
+  );
+  position:absolute;
+  top:0;
+  clip-path:polygon(0 0,100% 0,50% 70%);
+  transform-origin:top;
+  transition:transform 1.2s ease;
+  z-index:3;
 }
 
 .seal{
-position:absolute;
-top:52%;
-left:50%;
-transform:translate(-50%,-50%);
-width:70px;
-height:70px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:600;
-color:white;
-font-size:17px;
-background:radial-gradient(circle at 30% 30%, #e2b44a, #b8831c 70%);
-box-shadow:
-inset -3px -4px 8px rgba(0,0,0,0.4),
-inset 3px 3px 6px rgba(255,230,150,0.5),
-0 6px 15px rgba(0,0,0,0.3);
+  position:absolute;
+  top:52%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 25%, #f6d57a 0%, #c9972b 35%, #8a5a10 70%, #5a3a08 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  color:#fff6d5;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.4),
+    inset 0 4px 6px rgba(255,255,255,0.3),
+    inset 0 -4px 8px rgba(0,0,0,0.6);
+  z-index:10;
 }
 
-/* CONTENIDO */
-
-#content{
-display:none;
-padding-top:120px;
-}
-
-.section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-start;
-padding:40px 20px;
-text-align:center;
+.envelope-container.open .envelope-flap{
+  transform:rotateX(180deg);
 }
 
 /* HERO */
-
-.names{
-font-family:'Great Vibes',cursive;
-font-size:72px;
-color:white;
--webkit-text-stroke:1.3px black;
-margin-bottom:25px;
+.hero{
+  padding:120px 20px;
+  background:#f8f5f0;
 }
 
-.subtitle{
-font-size:22px;
-margin:10px 0;
+.hero h1{
+  font-size:56px;
+  letter-spacing:2px;
+  -webkit-text-stroke:1.8px #000;
+  color:white;
+  text-shadow:0 4px 12px rgba(0,0,0,0.3);
 }
 
-.countdown{
-margin-top:15px;
-font-size:18px;
+/* SECCIONES */
+.section{
+  padding:60px 20px;
 }
 
-/* Botones */
+.date{
+  font-size:28px;
+  margin-top:20px;
+}
 
+#contador{
+  font-size:22px;
+  margin-top:15px;
+}
+
+/* BOTONES */
 .button{
-display:inline-block;
-margin:20px 10px;
-padding:10px 26px;
-border:1px solid #b48a3a;
-color:#b48a3a;
-text-decoration:none;
-border-radius:30px;
-font-size:15px;
-transition:0.3s;
-background:white;
-cursor:pointer;
+  display:inline-block;
+  margin:15px;
+  padding:14px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:16px;
+  background:linear-gradient(145deg,#c6a23a,#8f6b1c);
+  color:white;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  transition:0.3s;
 }
 
 .button:hover{
-background:#b48a3a;
-color:white;
+  transform:scale(1.05);
 }
 
-/* RSVP */
-
-.rsvp-form{
-margin-top:20px;
-display:none;
+/* PETALOS */
+.petalo{
+  position:fixed;
+  top:-20px;
+  width:12px;
+  height:12px;
+  background:#e8a6b8;
+  border-radius:50%;
+  opacity:0.8;
+  animation:caer linear forwards;
 }
 
-.rsvp-form input,
-.rsvp-form select{
-padding:10px;
-margin:10px;
-border:1px solid #ccc;
-border-radius:6px;
+@keyframes caer{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
 }
-
-/* Footer */
-
-.footer-love{
-margin-top:120px;
-padding:40px 0;
-font-family:'Great Vibes',cursive;
-font-size:36px;
-border-top:1px solid #d8cfc1;
-color:#b48a3a;
-text-align:center;
-}
-
-/* Pétalos */
-
-.petal{
-position:fixed;
-top:-10px;
-width:12px;
-height:12px;
-background:#d88aa3;
-border-radius:50%;
-opacity:0.8;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
-opacity:0;
-}
-}
-
 </style>
 </head>
-
 <body>
 
-<div id="envelope-container">
-<div id="instruction">Haz clic en el sobre</div>
-<div class="envelope" onclick="openInvitation()">
-<div class="flap" id="flap"></div>
-<div class="seal">B & L</div>
-</div>
-</div>
-
-<div id="content">
-
-<section class="section">
-
-<div class="names">Bryan & Luciana</div>
-
-<div class="subtitle">Nos casamos el día</div>
-<div class="subtitle">27 de Junio 2026</div>
-
-<div id="countdown" class="countdown"></div>
-
-<div class="subtitle">4:30 PM</div>
-
-<a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
-Ver ubicación
-</a>
-
-<a class="button" onclick="addToCalendar()">
-Agregar al Calendario
-</a>
-
-<button class="button" onclick="toggleRSVP()">Confirmar Asistencia</button>
-
-<div class="rsvp-form" id="rsvpForm">
-<form action="https://formsubmit.co/TUEMAILAQUI@gmail.com" method="POST">
-<input type="text" name="Nombre" placeholder="Tu nombre" required>
-<select name="Asistencia" required>
-<option value="">¿Asistirás?</option>
-<option value="Sí asistiré">Sí asistiré</option>
-<option value="No podré asistir">No podré asistir</option>
-</select>
-<input type="hidden" name="_captcha" value="false">
-<br>
-<button type="submit" class="button">Enviar Confirmación</button>
-</form>
+<div id="intro">
+  <p>Haz click en el sobre</p>
+  <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
+    <div class="envelope-base"></div>
+    <div class="envelope-flap"></div>
+    <div class="seal">B & L</div>
+  </div>
 </div>
 
-</section>
-
-<div class="footer-love">
-Con amor
+<div class="hero">
+  <h1>Bryan & Luciana</h1>
 </div>
 
+<div class="section">
+  <h2>Nos casamos el día</h2>
+  <div class="date">Sábado, 27 de junio 2026</div>
+  <div id="contador"></div>
+
+  <a class="button" target="_blank"
+  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000">
+  Agregar a mi calendario
+  </a>
+
+  <a class="button" target="_blank"
+  href="https://wa.me/1234567890?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda">
+  Confirmar asistencia (RSVP)
+  </a>
 </div>
+
+<footer>
+  Con amor, 2026
+</footer>
 
 <script>
+function abrirInvitacion(){
+  const sobre=document.getElementById('sobre');
+  sobre.classList.add('open');
 
-window.onload=function(){
-document.getElementById("content").style.display="none";
-document.getElementById("envelope-container").style.display="flex";
+  // PETALOS
+  for(let i=0;i<40;i++){
+    let p=document.createElement('div');
+    p.className='petalo';
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(4+Math.random()*3)+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),7000);
+  }
 }
 
-function openInvitation(){
-document.getElementById("flap").style.transform="rotateX(180deg)";
-createPetals();
+// CUENTA REGRESIVA
+const fechaBoda=new Date("June 27, 2026 16:30:00").getTime();
+const contador=document.getElementById("contador");
 
-setTimeout(()=>{
-document.getElementById("envelope-container").style.display="none";
-document.getElementById("content").style.display="block";
+setInterval(()=>{
+  const ahora=new Date().getTime();
+  const dif=fechaBoda-ahora;
+  const dias=Math.floor(dif/(1000*60*60*24));
+  const horas=Math.floor((dif/(1000*60*60))%24);
+  contador.innerHTML=`Faltan ${dias} días y ${horas} horas`;
 },1000);
-}
-
-function createPetals(){
-for(let i=0;i<30;i++){
-let petal=document.createElement("div");
-petal.classList.add("petal");
-petal.style.left=Math.random()*100+"vw";
-petal.style.animationDuration=(5+Math.random()*3)+"s"; /* 2 segundos más */
-document.body.appendChild(petal);
-setTimeout(()=>{petal.remove();},8000);
-}
-}
-
-function toggleRSVP(){
-let form=document.getElementById("rsvpForm");
-form.style.display=form.style.display==="block"?"none":"block";
-}
-
-var eventDate=new Date("June 27, 2026 16:30:00").getTime();
-
-setInterval(function(){
-var now=new Date().getTime();
-var distance=eventDate-now;
-
-var days=Math.floor(distance/(1000*60*60*24));
-var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-
-document.getElementById("countdown").innerHTML=
-"Faltan "+days+" días "+hours+"h "+minutes+"m";
-},1000);
-
-function addToCalendar(){
-var start="20260627T163000";
-var end="20260627T213000";
-
-var url="https://calendar.google.com/calendar/render?action=TEMPLATE"
-+"&text=Boda Bryan y Luciana"
-+"&dates="+start+"/"+end
-+"&details=Nos encantaría que nos acompañes"
-+"&location=https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7";
-
-window.open(url);
-}
-
 </script>
 
 </body>
