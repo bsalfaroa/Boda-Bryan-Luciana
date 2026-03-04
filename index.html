@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bryan & Luciana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 margin:0;
 background:#f3efe8;
 font-family:'Playfair Display',serif;
-overflow-x:hidden;
 text-align:center;
+overflow-x:hidden;
 }
 
-/* SOBRE */
+/* ================= SOBRE ================= */
 
 #envelope-container{
 position:fixed;
@@ -45,6 +44,7 @@ position:relative;
 cursor:pointer;
 border-radius:6px;
 box-shadow:0 15px 40px rgba(0,0,0,0.15);
+overflow:hidden;
 }
 
 .flap{
@@ -56,78 +56,69 @@ background:#d9ccb8;
 clip-path:polygon(0 0,100% 0,50% 55%);
 transition:1s ease;
 transform-origin:top;
-border-radius:6px;
 }
 
 .seal{
 position:absolute;
-top:55%;
+top:52%;
 left:50%;
 transform:translate(-50%,-50%);
-width:80px;
-height:80px;
+width:70px;
+height:70px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
 font-weight:600;
 color:white;
-font-size:18px;
+font-size:17px;
 
-/* Oro con bordes quemados */
+/* sello estilo anterior elegante */
 background:
-radial-gradient(circle at 30% 30%, #f7d774, #c79a2e 60%, #8b5e15 100%);
+radial-gradient(circle at 30% 30%, #e2b44a, #b8831c 70%);
 box-shadow:
-inset -4px -6px 12px rgba(0,0,0,0.4),
-inset 4px 6px 10px rgba(255,220,120,0.5),
-0 8px 20px rgba(0,0,0,0.3);
-transition:0.8s;
+inset -3px -4px 8px rgba(0,0,0,0.4),
+inset 3px 3px 6px rgba(255,230,150,0.5),
+0 6px 15px rgba(0,0,0,0.3);
+transition:0.6s;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 #hero{
 display:none;
 padding:120px 20px;
 position:relative;
-animation:fadeIn 2s ease forwards;
 }
 
-/* Marco floral */
+/* Laureles verdes */
 
-#hero:before,
-#hero:after{
-content:"❀ ❁ ❀ ❁ ❀";
+.laurel-left,
+.laurel-right{
 position:absolute;
-font-size:26px;
-color:#b48a3a;
-letter-spacing:15px;
-width:100%;
-left:0;
+top:50%;
+transform:translateY(-50%);
+font-size:120px;
+color:#2f5d3a;
+opacity:0.15;
 }
 
-#hero:before{
-top:20px;
-}
-
-#hero:after{
-bottom:20px;
-}
+.laurel-left{ left:5%; }
+.laurel-right{ right:5%; }
 
 /* NOMBRES */
 
 .names{
 font-family:'Great Vibes',cursive;
-font-size:64px;
+font-size:68px;
 color:white;
--webkit-text-stroke:1.5px black;
-animation:softGlow 3s ease-in-out infinite alternate;
+-webkit-text-stroke:1.3px black;
+margin-bottom:30px;
 }
 
 /* DETALLES */
 
 .details{
-margin-top:40px;
 font-size:20px;
 }
 
@@ -141,16 +132,24 @@ border-radius:5px;
 cursor:pointer;
 }
 
-/* ANIMACIONES */
+/* ================= PÉTALOS ================= */
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+.petal{
+position:fixed;
+top:-10px;
+width:12px;
+height:12px;
+background:#d88aa3;
+border-radius:50%;
+opacity:0.8;
+animation:fall linear forwards;
 }
 
-@keyframes softGlow{
-from{letter-spacing:1px;}
-to{letter-spacing:4px;}
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
 }
 
 </style>
@@ -168,11 +167,16 @@ to{letter-spacing:4px;}
 </div>
 
 <div id="hero">
+
+<div class="laurel-left">❧</div>
+<div class="laurel-right">❧</div>
+
 <div class="names">Bryan & Luciana</div>
 
 <div class="details">
 <p>27 de Junio 2026</p>
 <p>4:30 PM</p>
+
 <p>
 <a href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
 Ver ubicación
@@ -187,8 +191,8 @@ Ver ubicación
 
 <script>
 
-/* Siempre volver al sobre al refrescar */
-window.onload = function(){
+/* Siempre volver al sobre */
+window.onload=function(){
 document.getElementById("hero").style.display="none";
 document.getElementById("envelope-container").style.display="flex";
 }
@@ -198,38 +202,52 @@ function openInvitation(){
 document.getElementById("flap").style.transform="rotateX(180deg)";
 document.querySelector(".seal").style.opacity="0";
 
+createPetals();
+
 setTimeout(()=>{
 document.getElementById("envelope-container").style.display="none";
 document.getElementById("hero").style.display="block";
 },1000);
 }
 
+/* Pétalos */
+function createPetals(){
+for(let i=0;i<25;i++){
+let petal=document.createElement("div");
+petal.classList.add("petal");
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(petal);
+
+setTimeout(()=>{petal.remove();},6000);
+}
+}
+
 /* Cuenta regresiva */
-var eventDate = new Date("June 27, 2026 16:30:00").getTime();
+var eventDate=new Date("June 27, 2026 16:30:00").getTime();
 
 setInterval(function(){
-var now = new Date().getTime();
-var distance = eventDate - now;
+var now=new Date().getTime();
+var distance=eventDate-now;
 
-var days = Math.floor(distance/(1000*60*60*24));
-var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var days=Math.floor(distance/(1000*60*60*24));
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
 
-document.getElementById("countdown").innerHTML =
-"Faltan " + days + " días " + hours + "h " + minutes + "m";
+document.getElementById("countdown").innerHTML=
+"Faltan "+days+" días "+hours+"h "+minutes+"m";
 },1000);
 
 /* Calendario 4:30 PM */
 function addToCalendar(){
+var start="20260627T163000";
+var end="20260627T213000";
 
-var start = "20260627T163000";
-var end = "20260627T213000";
-
-var url = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-+ "&text=Boda Bryan y Luciana"
-+ "&dates=" + start + "/" + end
-+ "&details=Nos encantaría que nos acompañes"
-+ "&location=https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7";
+var url="https://calendar.google.com/calendar/render?action=TEMPLATE"
++"&text=Boda Bryan y Luciana"
++"&dates="+start+"/"+end
++"&details=Nos encantaría que nos acompañes"
++"&location=https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7";
 
 window.open(url);
 }
