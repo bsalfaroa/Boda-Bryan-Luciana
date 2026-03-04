@@ -3,306 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación de Boda</title>
+<title>Bryan & Luciana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Playfair Display', serif;
-  background: #f3efe8;
-  color: #444;
-  text-align: center;
-  overflow-x: hidden;
-  overflow-y: hidden; /* Bloqueado hasta abrir */
-  transition: background 1.5s ease;
-}
 
-body.opened {
-  background: #f8f5f0;
-}
-
-/* HERO */
-.hero {
-  background-image: url('foto-portada.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 180px 20px;
-  color: white;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(40px);
-  transition: all 1.5s ease;
-}
-
-.hero.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 72px;
-  letter-spacing: 2px;
-  color: white;
-
-  /* Borde negro */
-  -webkit-text-stroke: 1.5px black;
-  text-stroke: 1.5px black;
-
-  opacity: 0;
-  transform: translateY(30px);
-  animation: aparecerNombre 2s ease forwards;
-  animation-delay: 0.8s;
-}
-
-@keyframes aparecerNombre {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Contenido oculto */
-#contenido,
-#ubicacion,
-#galeria,
-footer {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(30px);
-  transition: all 1.5s ease;
-}
-
-#contenido.visible,
-#ubicacion.visible,
-#galeria.visible,
-footer.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+body{
+margin:0;
+background:#f3efe8;
+font-family:'Playfair Display',serif;
+overflow-x:hidden;
+text-align:center;
 }
 
 /* SOBRE */
-.section {
-  padding: 60px 20px;
+
+#envelope-container{
+position:fixed;
+width:100%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:#f3efe8;
+z-index:10;
 }
 
-.envelope-container {
-  perspective: 1200px;
-  width: 340px;
-  height: 230px;
-  margin: 120px auto;
-  position: relative;
-  cursor: pointer;
-  transition: opacity 1s ease, transform 1s ease;
+#instruction{
+margin-bottom:40px;
+font-size:18px;
+color:#444;
 }
 
-.envelope-container.fade-out {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
+.envelope{
+width:420px;
+height:250px;
+background:#e6dccd;
+position:relative;
+cursor:pointer;
+border-radius:6px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
 }
 
-.envelope-base {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, #f1e7d8, #e6d8c3);
-  border-radius: 8px;
-  position: absolute;
-  bottom: 0;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+.flap{
+position:absolute;
+top:0;
+width:100%;
+height:100%;
+background:#d9ccb8;
+clip-path:polygon(0 0,100% 0,50% 55%);
+transition:1s ease;
+transform-origin:top;
+border-radius:6px;
 }
 
-.envelope-flap {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, #e8dcc8, #d8c8b3);
-  position: absolute;
-  top: 0;
-  clip-path: polygon(0 0, 100% 0, 50% 70%);
-  transform-origin: top;
-  transition: transform 1.2s ease;
-  z-index: 3;
+.seal{
+position:absolute;
+top:55%;
+left:50%;
+transform:translate(-50%,-50%);
+width:80px;
+height:80px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+color:white;
+font-size:18px;
+
+/* Oro con bordes quemados */
+background:
+radial-gradient(circle at 30% 30%, #f7d774, #c79a2e 60%, #8b5e15 100%);
+box-shadow:
+inset -4px -6px 12px rgba(0,0,0,0.4),
+inset 4px 6px 10px rgba(255,220,120,0.5),
+0 8px 20px rgba(0,0,0,0.3);
+transition:0.8s;
 }
 
-/* SELLO ORO QUEMADO */
-.seal {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
+/* HERO */
 
-  background:
-    radial-gradient(circle at 35% 30%, #f7d27a 0%, #d4a63c 35%, #a06f16 65%, #5a3a05 100%);
-
-  clip-path: polygon(
-    50% 0%, 65% 8%, 80% 15%, 92% 30%, 100% 50%,
-    92% 70%, 80% 85%, 65% 92%, 50% 100%,
-    35% 92%, 20% 85%, 8% 70%, 0% 50%,
-    8% 30%, 20% 15%, 35% 8%
-  );
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  letter-spacing: 3px;
-  color: #fff8dc;
-
-  box-shadow:
-    0 10px 25px rgba(0,0,0,0.5),
-    inset 0 5px 8px rgba(255,255,255,0.2),
-    inset 0 -8px 14px rgba(0,0,0,0.7),
-    0 0 0 3px rgba(70,40,0,0.6);
-
-  z-index: 10;
+#hero{
+display:none;
+padding:120px 20px;
+position:relative;
+animation:fadeIn 2s ease forwards;
 }
 
-.envelope-container.open .envelope-flap {
-  transform: rotateX(180deg);
+/* Marco floral */
+
+#hero:before,
+#hero:after{
+content:"❀ ❁ ❀ ❁ ❀";
+position:absolute;
+font-size:26px;
+color:#b48a3a;
+letter-spacing:15px;
+width:100%;
+left:0;
 }
 
-.envelope-container.open .seal {
-  opacity: 0;
+#hero:before{
+top:20px;
 }
 
-.date {
-  font-size: 28px;
-  margin-top: 20px;
+#hero:after{
+bottom:20px;
 }
 
-/* BOTONES */
-.button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  background: linear-gradient(145deg, #c6a23a, #8f6b1c);
-  color: white;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  transition: all 0.3s ease;
+/* NOMBRES */
+
+.names{
+font-family:'Great Vibes',cursive;
+font-size:64px;
+color:white;
+-webkit-text-stroke:1.5px black;
+animation:softGlow 3s ease-in-out infinite alternate;
 }
 
-.button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+/* DETALLES */
+
+.details{
+margin-top:40px;
+font-size:20px;
 }
 
-.gallery img {
-  width: 90%;
-  max-width: 320px;
-  margin: 12px;
-  border-radius: 20px;
+button{
+margin-top:30px;
+padding:12px 25px;
+border:none;
+background:#b48a3a;
+color:white;
+border-radius:5px;
+cursor:pointer;
 }
 
-footer {
-  padding: 40px;
-  font-size: 14px;
-  background: #eae3d8;
+/* ANIMACIONES */
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
 }
+
+@keyframes softGlow{
+from{letter-spacing:1px;}
+to{letter-spacing:4px;}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="section" id="intro">
-  <p>Haz clic en el sobre para abrir la invitación</p>
+<div id="envelope-container">
+<div id="instruction">Haz clic en el sobre para abrir la invitación</div>
 
-  <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
-    <div class="envelope-base"></div>
-    <div class="envelope-flap"></div>
-    <div class="seal">B & L</div>
-  </div>
+<div class="envelope" onclick="openInvitation()">
+<div class="flap" id="flap"></div>
+<div class="seal">B & L</div>
+</div>
 </div>
 
-<div class="hero" id="hero">
-  <h1>Bryan & Luciana</h1>
-</div>
+<div id="hero">
+<div class="names">Bryan & Luciana</div>
 
-<div id="contenido" class="section">
-  <h2>Nos casamos el día:</h2>
-  <div class="date">Sábado, 27 de junio 2026</div>
-  <a class="button"
-     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
-     target="_blank">
-     Agregar a mi calendario
-  </a>
-</div>
+<div class="details">
+<p>27 de Junio 2026</p>
+<p>4:30 PM</p>
+<p>
+<a href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
+Ver ubicación
+</a>
+</p>
 
-<div class="section" id="ubicacion">
-  <h2>Ubicación del Evento</h2>
-  <a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
-     Ver en Google Maps
-  </a>
-</div>
+<p id="countdown"></p>
 
-<div class="section gallery" id="galeria">
-  <h2>Nuestras Fotos</h2>
-  <img src="foto1.jpg">
-  <img src="foto2.jpg">
+<button onclick="addToCalendar()">Agregar al Calendario</button>
 </div>
-
-<footer id="footer">
-  Con amor, 2026
-</footer>
+</div>
 
 <script>
-function abrirInvitacion() {
 
-  const sobre = document.getElementById('sobre');
-  const hero = document.getElementById('hero');
-  const contenido = document.getElementById('contenido');
-  const ubicacion = document.getElementById('ubicacion');
-  const galeria = document.getElementById('galeria');
-  const footer = document.getElementById('footer');
-  const intro = document.getElementById('intro');
+/* Siempre volver al sobre al refrescar */
+window.onload = function(){
+document.getElementById("hero").style.display="none";
+document.getElementById("envelope-container").style.display="flex";
+}
 
-  document.body.classList.add('opened');
-  document.body.style.overflowY = "auto";
+/* Abrir invitación */
+function openInvitation(){
+document.getElementById("flap").style.transform="rotateX(180deg)";
+document.querySelector(".seal").style.opacity="0";
 
-  sobre.classList.add('open');
-
-  setTimeout(() => {
-    sobre.classList.add('fade-out');
-  }, 1000);
-
-  setTimeout(() => {
-    intro.style.display = 'none';
-
-    hero.classList.add('visible');
-    contenido.classList.add('visible');
-    ubicacion.classList.add('visible');
-    galeria.classList.add('visible');
-    footer.classList.add('visible');
-  }, 1700);
+setTimeout(()=>{
+document.getElementById("envelope-container").style.display="none";
+document.getElementById("hero").style.display="block";
+},1000);
 }
 
 /* Cuenta regresiva */
-const fechaBoda = new Date("June 27, 2026 16:30:00").getTime();
-const contador = document.createElement('div');
-contador.style.fontSize = '22px';
-contador.style.marginTop = '20px';
-document.querySelector('.date').after(contador);
+var eventDate = new Date("June 27, 2026 16:30:00").getTime();
 
-setInterval(() => {
-  const ahora = new Date().getTime();
-  const diferencia = fechaBoda - ahora;
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+setInterval(function(){
+var now = new Date().getTime();
+var distance = eventDate - now;
 
-  contador.innerHTML = `Faltan ${dias} días y ${horas} horas`;
-}, 1000);
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML =
+"Faltan " + days + " días " + hours + "h " + minutes + "m";
+},1000);
+
+/* Calendario 4:30 PM */
+function addToCalendar(){
+
+var start = "20260627T163000";
+var end = "20260627T213000";
+
+var url = "https://calendar.google.com/calendar/render?action=TEMPLATE"
++ "&text=Boda Bryan y Luciana"
++ "&dates=" + start + "/" + end
++ "&details=Nos encantaría que nos acompañes"
++ "&location=https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7";
+
+window.open(url);
+}
+
 </script>
 
 </body>
