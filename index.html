@@ -61,7 +61,7 @@ body.opened {
   }
 }
 
-/* Ocultar contenido hasta abrir */
+/* Contenido oculto */
 #contenido,
 #ubicacion,
 #galeria,
@@ -125,17 +125,18 @@ footer.visible {
   z-index: 3;
 }
 
-/* SELLO REALISTA */
+/* SELLO ORO QUEMADO */
 .seal {
   position: absolute;
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
 
-  background: radial-gradient(circle at 35% 30%, #f3c86a 0%, #c9972b 40%, #9c6f1a 75%, #6e4b10 100%);
-  
+  background:
+    radial-gradient(circle at 35% 30%, #f7d27a 0%, #d4a63c 35%, #a06f16 65%, #5a3a05 100%);
+
   clip-path: polygon(
     50% 0%, 65% 8%, 80% 15%, 92% 30%, 100% 50%,
     92% 70%, 80% 85%, 65% 92%, 50% 100%,
@@ -148,14 +149,15 @@ footer.visible {
   justify-content: center;
 
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: 3px;
-  color: #fff6dc;
+  color: #fff8dc;
 
   box-shadow:
-    0 8px 20px rgba(0,0,0,0.45),
-    inset 0 4px 6px rgba(255,255,255,0.25),
-    inset 0 -6px 10px rgba(0,0,0,0.55);
+    0 10px 25px rgba(0,0,0,0.5),
+    inset 0 5px 8px rgba(255,255,255,0.2),
+    inset 0 -8px 14px rgba(0,0,0,0.7),
+    0 0 0 3px rgba(70,40,0,0.6);
 
   z-index: 10;
 }
@@ -227,12 +229,18 @@ footer {
 <div id="contenido" class="section">
   <h2>Nos casamos el día:</h2>
   <div class="date">Sábado, 27 de junio 2026</div>
-  <a class="button" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627/20260628" target="_blank">Agregar a mi calendario</a>
+  <a class="button"
+     href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Bryan+y+Luciana&dates=20260627T163000/20260627T230000"
+     target="_blank">
+     Agregar a mi calendario
+  </a>
 </div>
 
 <div class="section" id="ubicacion">
   <h2>Ubicación del Evento</h2>
-  <a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">Ver en Google Maps</a>
+  <a class="button" href="https://maps.app.goo.gl/gLvbVXCNgGFLqSWH7" target="_blank">
+     Ver en Google Maps
+  </a>
 </div>
 
 <div class="section gallery" id="galeria">
@@ -245,19 +253,17 @@ footer {
   Con amor, 2026
 </footer>
 
-<audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 function abrirInvitacion() {
+
+  localStorage.setItem("invitacionAbierta", "true");
+
   const sobre = document.getElementById('sobre');
   const hero = document.getElementById('hero');
   const contenido = document.getElementById('contenido');
   const ubicacion = document.getElementById('ubicacion');
   const galeria = document.getElementById('galeria');
   const footer = document.getElementById('footer');
-  const musica = document.getElementById('musica');
   const intro = document.getElementById('intro');
 
   document.body.classList.add('opened');
@@ -277,14 +283,18 @@ function abrirInvitacion() {
     ubicacion.classList.add('visible');
     galeria.classList.add('visible');
     footer.classList.add('visible');
-
-    window.scrollTo({ top: hero.offsetTop, behavior: 'smooth' });
-    musica.play();
   }, 1700);
 }
 
+/* Si ya estaba abierta al recargar */
+window.onload = function() {
+  if (localStorage.getItem("invitacionAbierta") === "true") {
+    abrirInvitacion();
+  }
+};
+
 /* Cuenta regresiva */
-const fechaBoda = new Date("June 27, 2026 00:00:00").getTime();
+const fechaBoda = new Date("June 27, 2026 16:30:00").getTime();
 const contador = document.createElement('div');
 contador.style.fontSize = '22px';
 contador.style.marginTop = '20px';
