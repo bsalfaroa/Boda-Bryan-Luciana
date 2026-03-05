@@ -10,19 +10,20 @@
 
 <style>
 
-body {
-  margin:0;
-  padding:0 140px;
-  box-sizing:border-box;
-  font-family:'Playfair Display', serif;
-  background:#f3efe8;
-  color:#444;
-  text-align:center;
-  overflow:hidden;   /* bloquea el scroll */
-  transition:background 1.5s ease;
+body{
+margin:0;
+padding:0 140px;
+box-sizing:border-box;
+font-family:'Playfair Display', serif;
+background:#f3efe8;
+color:#444;
+text-align:center;
+overflow:hidden;
+transition:background 1.5s ease;
 }
 
 /* MARGENES VERDES */
+
 body::before,
 body::after{
 content:"";
@@ -34,15 +35,11 @@ background:#aeb79a;
 z-index:-1;
 }
 
-body::before{
-left:0;
-}
-
-body::after{
-right:0;
-}
+body::before{ left:0; }
+body::after{ right:0; }
 
 /* INTRO */
+
 #intro{
 margin-top:120px;
 transition:1s;
@@ -144,7 +141,7 @@ transform:translateY(0);
 /* NOMBRES */
 
 .hero h1{
-font-family:'Great Vibes', cursive !important;
+font-family:'Great Vibes', cursive;
 font-size:72px;
 color:white;
 -webkit-text-stroke:1.3px black;
@@ -208,6 +205,38 @@ transform:translateY(110vh) rotate(360deg);
 }
 }
 
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+body{
+padding:0 25px;
+}
+
+body::before,
+body::after{
+width:25px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.envelope-container{
+width:260px;
+height:180px;
+}
+
+#intro p{
+font-size:22px;
+}
+
+.section{
+padding:40px 10px;
+}
+
+}
+
 </style>
 </head>
 
@@ -268,24 +297,20 @@ Con amor, 2026
 
 window.addEventListener("pageshow", function () {
 
-window.scrollTo(0,0);
+window.scrollTo(0,0)
 
-/* bloquear scroll */
-document.body.style.overflow = "hidden";
+document.body.style.overflow="hidden"
 
-/* mostrar intro (sobre) */
-document.getElementById("intro").style.display = "block";
-document.getElementById("intro").classList.remove("fade");
+document.getElementById("intro").style.display="block"
+document.getElementById("intro").classList.remove("fade")
 
-/* cerrar sobre */
-document.getElementById("sobre").classList.remove("open");
+document.getElementById("sobre").classList.remove("open")
 
-/* ocultar contenido */
-document.getElementById("hero").classList.remove("visible");
-document.getElementById("info").classList.remove("visible");
-document.getElementById("footer").classList.remove("visible");
+document.getElementById("hero").classList.remove("visible")
+document.getElementById("info").classList.remove("visible")
+document.getElementById("footer").classList.remove("visible")
 
-});
+})
 
 /* ABRIR SOBRE */
 
