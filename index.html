@@ -270,9 +270,20 @@ window.onload=function(){
 
 window.scrollTo(0,0)
 
+/* bloquear scroll */
 document.body.style.overflow="hidden"
 
+/* mostrar sobre */
 document.getElementById("intro").style.display="block"
+document.getElementById("intro").classList.remove("fade")
+
+/* cerrar sobre */
+document.getElementById("sobre").classList.remove("open")
+
+/* ocultar contenido */
+document.getElementById("hero").classList.remove("visible")
+document.getElementById("info").classList.remove("visible")
+document.getElementById("footer").classList.remove("visible")
 
 }
 
