@@ -12,77 +12,101 @@
 
 body{
 margin:0;
-font-family:'Playfair Display', serif;
-background:#f2efe9;
-color:#4b4b4b;
-text-align:center;
+font-family:'Playfair Display',serif;
+background:#d7dbc8;
 }
 
-.container{
-max-width:420px;
+.wrapper{
+max-width:430px;
 margin:auto;
-padding:40px 20px;
+background:#f3efe8;
+min-height:100vh;
+text-align:center;
+padding:40px 25px;
+box-sizing:border-box;
 }
 
 .intro{
 font-size:18px;
 line-height:1.6;
 margin-bottom:30px;
+color:#4a4a4a;
 }
 
 .nombres{
-font-family:'Great Vibes', cursive;
+font-family:'Great Vibes',cursive;
 font-size:48px;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
-.foto-boda{
+.foto{
 width:250px;
 height:250px;
 border-radius:50%;
 object-fit:cover;
-margin:20px auto 40px auto;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+margin:auto;
 display:block;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
 opacity:0;
 transform:scale(.9);
-animation:aparecerFoto 1.2s ease forwards;
-animation-delay:.5s;
+animation:fotoFade 1.2s ease forwards;
 }
 
-@keyframes aparecerFoto{
+@keyframes fotoFade{
 to{
 opacity:1;
 transform:scale(1);
 }
 }
 
-.nos-casamos{
+.noscasamos{
 font-size:36px;
 letter-spacing:3px;
-margin-top:40px;
+margin-top:60px;
 margin-bottom:10px;
 opacity:0;
 transform:translateY(20px);
-animation:aparecerTexto 1.2s ease forwards;
-animation-delay:1s;
+animation:textFade 1s ease forwards;
+animation-delay:.6s;
 }
 
-@keyframes aparecerTexto{
+@keyframes textFade{
 to{
 opacity:1;
 transform:translateY(0);
 }
 }
 
+.decor{
+font-size:20px;
+margin-bottom:10px;
+}
+
 .fecha{
 font-size:28px;
 font-weight:500;
-margin:10px 0 30px 0;
+margin-bottom:10px;
+}
+
+.contador{
+font-size:18px;
+margin-bottom:30px;
+}
+
+.boton{
+display:inline-block;
+background:linear-gradient(#c7a33c,#a8872c);
+color:white;
+padding:14px 28px;
+border-radius:30px;
+text-decoration:none;
+font-size:16px;
+margin:10px 0;
+box-shadow:0 6px 14px rgba(0,0,0,0.25);
 }
 
 .seccion{
-margin-top:40px;
+margin-top:45px;
 }
 
 .titulo{
@@ -94,12 +118,11 @@ margin-bottom:10px;
 .lugar{
 font-size:22px;
 font-weight:500;
-margin-bottom:5px;
 }
 
 .hora{
 font-size:18px;
-margin-bottom:10px;
+margin-top:5px;
 }
 
 .vestimenta{
@@ -107,14 +130,14 @@ font-size:18px;
 }
 
 .final{
-margin-top:60px;
-font-size:20px;
+margin-top:70px;
+font-size:22px;
 }
 
 .nombres-final{
-font-family:'Great Vibes', cursive;
-font-size:40px;
-margin-top:10px;
+font-family:'Great Vibes',cursive;
+font-size:42px;
+margin-top:8px;
 }
 
 </style>
@@ -122,7 +145,7 @@ margin-top:10px;
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
 <p class="intro">
 Te invitamos a celebrar con nosotros uno de los días más importantes de nuestra vida
@@ -132,15 +155,27 @@ Te invitamos a celebrar con nosotros uno de los días más importantes de nuestr
 Bryan & Luciana
 </div>
 
-<img src="foto.jpg" class="foto-boda">
+<img src="foto.jpg" class="foto">
 
-<div class="nos-casamos">
+<div class="noscasamos">
 Nos casamos
+</div>
+
+<div class="decor">
+❦
 </div>
 
 <div class="fecha">
 27 de Junio 2026
 </div>
+
+<div class="contador">
+Faltan 113 días
+</div>
+
+<a class="boton" href="#">
+Agregar al calendario
+</a>
 
 <div class="seccion">
 
@@ -155,6 +190,10 @@ Quinta Mirasol
 <div class="hora">
 4:30 PM
 </div>
+
+<a class="boton" href="https://maps.google.com" target="_blank">
+Ver ubicación
+</a>
 
 </div>
 
