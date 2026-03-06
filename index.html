@@ -6,7 +6,7 @@
 
 <title>Bryan & Luciana</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -138,29 +138,6 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* NOMBRES */
-
-.hero h1{
-font-family:'Great Vibes', cursive;
-font-size:72px;
-color:white;
--webkit-text-stroke:1.3px black;
-margin-bottom:30px;
-font-weight:normal;
-}
-
-/* FOTO REDONDA */
-
-.foto-boda{
-width:180px;
-height:180px;
-border-radius:50%;
-object-fit:cover;
-margin:20px auto 30px auto;
-display:block;
-box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
-
 /* TEXTO INVITACION */
 
 .texto-invitacion{
@@ -169,6 +146,29 @@ margin:0 auto 40px auto;
 font-size:22px;
 line-height:1.6;
 font-weight:400;
+}
+
+/* NOMBRES */
+
+.hero h1{
+font-family:'Great Vibes', cursive;
+font-size:72px;
+color:white;
+-webkit-text-stroke:1.3px black;
+margin-bottom:25px;
+font-weight:normal;
+}
+
+/* FOTO */
+
+.foto-boda{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+margin:20px auto 40px auto;
+display:block;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
 
 /* CONTENIDO */
@@ -184,6 +184,25 @@ transition:1.5s;
 opacity:1;
 transform:translateY(0);
 }
+
+/* TITULO NOS CASAMOS */
+
+.titulo-boda{
+font-size:34px;
+font-weight:500;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+/* FECHA */
+
+.fecha-boda{
+font-size:32px;
+font-weight:500;
+margin-bottom:10px;
+}
+
+/* BOTONES */
 
 .button{
 display:block;
@@ -227,7 +246,7 @@ transform:translateY(110vh) rotate(360deg);
 }
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media (max-width:768px){
 
@@ -258,8 +277,8 @@ padding:40px 10px;
 }
 
 .foto-boda{
-width:140px;
-height:140px;
+width:170px;
+height:170px;
 }
 
 }
@@ -283,22 +302,23 @@ height:140px;
 </div>
 
 <div class="hero" id="hero">
-<h1>Bryan & Luciana</h1>
-
-<img src="foto.jpg" class="foto-boda">
 
 <div class="texto-invitacion">
 Te invitamos a celebrar con nosotros<br>
 uno de los días más importantes de nuestra vida
 </div>
 
+<h1>Bryan & Luciana</h1>
+
+<img src="foto.jpg" class="foto-boda">
+
 </div>
 
 <div class="section" id="info">
 
-<h2>Nos casamos</h2>
+<div class="titulo-boda">Nos casamos</div>
 
-<div style="font-size:28px">27 de Junio 2026</div>
+<div class="fecha-boda">27 de Junio 2026</div>
 
 <div id="contador" style="margin-top:15px;font-size:22px"></div>
 
