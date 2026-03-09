@@ -23,14 +23,14 @@ overflow:hidden;
 
 /* Título Dress Code */
 .titulo-dresscode{
-    font-size:34px; /* igual que "Ceremonia & Recepción" */
+    font-size:34px; 
     font-weight:600;
     margin-top:18px;
 }
 
 /* Detalle Dress Code */
 .detalle-dresscode{
-    font-size:24px; /* un poco más pequeño */
+    font-size:24px; 
     margin-top:4px;
 }
 
@@ -39,14 +39,15 @@ overflow:hidden;
     margin-top:8px;
     display:flex;
     justify-content:center;
-    gap:12px; /* espacio entre los iconos */
+    gap:16px; 
 }
 
 /* Ajuste de SVGs */
 .iconos-dresscode svg{
-    width:32px;
-    height:32px;
-    fill:#aeb79a;
+    width:56px;
+    height:56px;
+    stroke:#aeb79a;
+    fill:none;
 }
     
 /* MARGENES VERDES */
@@ -522,14 +523,20 @@ Abrir en Waze
   </div>
 
   <div class="iconos-dresscode">
-    <!-- Icono traje SVG -->
-    <svg class="icon-traje" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="#aeb79a">
-      <path d="M32 2 L42 12 L38 62 L26 62 L22 12 Z M32 12 L32 62" />
+    <!-- Icono traje tradicional -->
+    <svg class="icon-traje" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
+      <!-- Chaqueta -->
+      <path d="M20 2 L28 20 L28 62 H36 V20 L44 2 Z" />
+      <!-- Corbata clásica -->
+      <path d="M32 20 L32 38 L30 42 H34 L32 38" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 
-    <!-- Icono vestido SVG -->
-    <svg class="icon-vestido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="#aeb79a">
-      <path d="M32 2 L42 62 H22 Z M32 2 L32 22" />
+    <!-- Icono vestido tradicional -->
+    <svg class="icon-vestido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#aeb79a" stroke-width="2">
+      <!-- Silueta del vestido -->
+      <path d="M32 2 L40 62 H24 L32 2 Z" />
+      <!-- Pliegue central -->
+      <path d="M32 10 L32 62" stroke-linecap="round"/>
     </svg>
   </div>
 
