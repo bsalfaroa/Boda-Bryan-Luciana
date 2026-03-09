@@ -465,12 +465,22 @@ height:200px;
 }
 
 .gold-separator {
-    width:60px;
-    height:2px;
-    background:#c6a23a; /* dorado */
-    margin:15px auto;
-    border-radius:2px;
-    opacity:0.8;
+    width: 60px;
+    height: 2px;
+    background: #c6a23a; /* dorado */
+    border-radius: 2px;
+    opacity: 0.8;
+
+    /* centrado vertical entre bloques */
+    margin: 30px auto; /* aumenta si quieres más espacio entre secciones */
+    display: block;
+}
+
+.bloque-seccion{
+  display:flex;
+  flex-direction:column;
+  justify-content:center; /* centra verticalmente */
+  align-items:center;
 }
     
 </style>
@@ -487,7 +497,7 @@ Bryan & Luciana
 </div>
 
 <div class="fecha-intro">
-27 · Junio · 2026...
+27 · Junio · 2026....
 </div>
 
 <div class="envelope-container" id="sobre" onclick="abrirInvitacion()">
