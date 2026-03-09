@@ -21,6 +21,34 @@ text-align:center;
 overflow:hidden;
 }
 
+/* Título Dress Code */
+.titulo-dresscode{
+    font-size:34px; /* igual que "Ceremonia & Recepción" */
+    font-weight:600;
+    margin-top:18px;
+}
+
+/* Detalle Dress Code */
+.detalle-dresscode{
+    font-size:24px; /* un poco más pequeño */
+    margin-top:4px;
+}
+
+/* Iconos debajo */
+.iconos-dresscode{
+    margin-top:8px;
+    display:flex;
+    justify-content:center;
+    gap:12px; /* espacio entre los iconos */
+}
+
+/* Ajuste de SVGs */
+.iconos-dresscode svg{
+    width:32px;
+    height:32px;
+    fill:#aeb79a;
+}
+    
 /* MARGENES VERDES */
 
 body::before,
@@ -483,6 +511,30 @@ target="_blank">
 Abrir en Waze
 </a>
 
+<div class="dresscode-section">
+
+  <div class="titulo-dresscode">
+    Dress code:
+  </div>
+
+  <div class="detalle-dresscode">
+    Formal (saco opcional)
+  </div>
+
+  <div class="iconos-dresscode">
+    <!-- Icono traje SVG -->
+    <svg class="icon-traje" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="#aeb79a">
+      <path d="M32 2 L42 12 L38 62 L26 62 L22 12 Z M32 12 L32 62" />
+    </svg>
+
+    <!-- Icono vestido SVG -->
+    <svg class="icon-vestido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="#aeb79a">
+      <path d="M32 2 L42 62 H22 Z M32 2 L32 22" />
+    </svg>
+  </div>
+
+</div>
+    
 <a class="button"
 href="https://wa.me/50377418303?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda"
 target="_blank">
