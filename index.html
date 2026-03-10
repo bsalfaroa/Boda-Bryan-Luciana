@@ -228,6 +228,10 @@ transform:scale(.8);
 transition:1.6s;
 }
 
+#foto3{
+margin-top:30px;
+}  
+    
 .foto-boda.visible{
 opacity:1;
 transform:scale(1);
@@ -520,7 +524,7 @@ height:200px;
   font-style:italic;
   color:#555;
   margin:12px auto;
-  max-width:320px;
+  max-width:440px;
 }
 
 .versiculo-ref{
@@ -553,8 +557,35 @@ height:200px;
 .anillos-decoracion{
 width:160px;
 display:block;
-margin:15px auto 10px auto;
+margin:6px auto -5px auto;
 opacity:0.9;
+}
+
+.flores-top{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+pointer-events:none;
+z-index:2;
+opacity:0;
+transition:1.5s;
+}
+
+.flores-bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+pointer-events:none;
+z-index:2;
+opacity:0;
+transition:1.5s;
+}
+
+.flores-top.visible,
+.flores-bottom.visible{
+opacity:1;
 }
     
 </style>
@@ -597,6 +628,9 @@ Haz click en el sobre para abrir la invitación.
     
 </div>
 
+<img src="flores_top.png" class="flores-top">
+<img src="flores_bottom.png" class="flores-bottom">
+    
 <div class="hero" id="hero">
 
 <div class="texto-invitacion">
@@ -710,6 +744,18 @@ Abrir en Waze.
 </p>
     
 <div class="gold-separator"></div>
+
+<p class="versiculo-biblico">
+Nuestro amor ha crecido con cada día compartido y ahora queremos sellarlo con una promesa eterna. Nos llenaría de felicidad contar con tu presencia en este día tan especial.
+</p>
+
+<img src="foto3.jpg" class="foto-boda" id="foto3">
+    
+<div class="gold-separator"></div>
+
+<p style="font-size:18px;max-width:520px;margin:0 auto 15px auto;line-height:1.6;">
+Te solicitamos confirmar tu asistencia con mínimo 3 semanas de anticipación. Puedes confirmar usando este botón:
+</p>
     
 <a class="button"
 href="https://wa.me/50377418303?text=Hola%20Bryan%20y%20Luciana,%20confirmo%20mi%20asistencia%20a%20su%20boda"
@@ -759,12 +805,15 @@ intro.style.display="none"
 document.body.style.overflow="auto"
 
 document.getElementById("hero").classList.add("visible")
+document.querySelector(".flores-top").classList.add("visible")
+document.querySelector(".flores-bottom").classList.add("visible")
 document.getElementById("info").classList.add("visible")
 document.getElementById("footer").classList.add("visible")
 
 document.getElementById("foto").classList.add("visible")
 document.getElementById("foto2").classList.add("visible");
-
+document.getElementById("foto3").classList.add("visible");
+    
 setTimeout(()=>{
 document.getElementById("titulo").classList.add("visible")
 },600)
