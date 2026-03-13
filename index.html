@@ -83,7 +83,7 @@ margin-bottom:10px;
 
 .nombres-intro{
 font-family:'Great Vibes',cursive;
-font-size:clamp(36px,7vw,60px);
+font-size:60px;
 color:#000;
 margin-bottom:25px;
 }
@@ -199,7 +199,7 @@ transform:translateY(0);
 .texto-invitacion{
 max-width:520px;
 margin:0 auto 35px auto;
-font-size:clamp(18px,4vw,22px);
+font-size:22px;
 line-height:1.6;
 }
 
@@ -207,7 +207,7 @@ line-height:1.6;
 
 .hero h1{
 font-family:'Great Vibes', cursive;
-font-size:clamp(42px,8vw,72px);
+font-size:72px;
 color:#000;
 margin-bottom:20px;
 font-weight:normal;
@@ -584,6 +584,28 @@ transition:0.3s;
 .boton-musica:hover{
 transform:scale(1.05);
 }
+
+/* ESPACIOS RESERVADOS DESDE EL LINK */
+
+function obtenerParametro(nombre){
+
+const urlParams = new URLSearchParams(window.location.search)
+
+return urlParams.get(nombre)
+
+}
+
+const espacios = obtenerParametro("p")
+
+if(espacios){
+
+document.getElementById("espacios").textContent = espacios
+
+}else{
+
+document.getElementById("espacios").textContent = "2"
+
+}
     
 </style>
 </head>
@@ -595,7 +617,7 @@ transform:scale(1.05);
 <div class="titulo-intro">¡Nos casamos!</div>
 
 <div class="nombres-intro">
-Prueba 1
+Prueba 2
 </div>
 
 <div class="fecha-intro">
@@ -749,7 +771,7 @@ Abrir en Waze
 <div class="gold-separator"></div>
 
 <p style="font-size:18px;max-width:520px;margin:0 auto 15px auto;line-height:1.6;">
-Por favor confirmar tu asistencia antes del 7 de Junio. Confírmanos tu asistencia usando este botón:
+Por favor confirmar tu asistencia antes del 7 de Junio. Confirmanos tu asistencia usando este botón:
 </p>
     
 <a class="button"
@@ -881,28 +903,6 @@ musica.pause()
 icono.textContent = "🔇"
 
 }
-
-}
-
-/* ESPACIOS RESERVADOS DESDE EL LINK */
-
-function obtenerParametro(nombre){
-
-const urlParams = new URLSearchParams(window.location.search)
-
-return urlParams.get(nombre)
-
-}
-
-const espacios = obtenerParametro("p")
-
-if(espacios){
-
-document.getElementById("espacios").textContent = espacios
-
-}else{
-
-document.getElementById("espacios").textContent = "2"
 
 }
     
