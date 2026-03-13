@@ -12,7 +12,7 @@
 
 body{
 margin:0;
-padding:0 140px;
+padding:0 clamp(20px, 8vw, 140px);
 box-sizing:border-box;
 font-family:'Playfair Display', serif;
 background:#f3efe8;
@@ -54,7 +54,7 @@ body::after{
 content:"";
 position:fixed;
 top:0;
-width:140px;
+width:clamp(20px,8vw,140px);
 height:100%;
 background:#aeb79a;
 z-index:-1;
@@ -83,7 +83,7 @@ margin-bottom:10px;
 
 .nombres-intro{
 font-family:'Great Vibes',cursive;
-font-size:60px;
+font-size:clamp(36px,7vw,60px);
 color:#000;
 margin-bottom:25px;
 }
@@ -199,7 +199,7 @@ transform:translateY(0);
 .texto-invitacion{
 max-width:520px;
 margin:0 auto 35px auto;
-font-size:22px;
+font-size:clamp(18px,4vw,22px);
 line-height:1.6;
 }
 
@@ -207,7 +207,7 @@ line-height:1.6;
 
 .hero h1{
 font-family:'Great Vibes', cursive;
-font-size:72px;
+font-size:clamp(42px,8vw,72px);
 color:#000;
 margin-bottom:20px;
 font-weight:normal;
@@ -285,11 +285,6 @@ opacity:0.8;
 .titulo-boda.visible{
 opacity:1;
 transform:translateY(0);
-}
-
-.separador{
-font-size:20px;
-margin:10px 0;
 }
 
 .titulo-ceremonia{
@@ -749,7 +744,7 @@ Abrir en Waze
 <div class="gold-separator"></div>
 
 <p style="font-size:18px;max-width:520px;margin:0 auto 15px auto;line-height:1.6;">
-Por favor confirmar tu asistencia antes del 7 de Junio. Confirmanos tu asistencia usando este botón:
+Por favor confirmar tu asistencia antes del 7 de Junio. Confírmanos tu asistencia usando este botón:
 </p>
     
 <a class="button"
