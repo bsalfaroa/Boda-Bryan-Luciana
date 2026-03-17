@@ -579,7 +579,7 @@ opacity:0.9;
 }
 
 .boton-musica{
-position:absolute;
+position:fixed;   /* 👈 volvemos a fixed */
 bottom:20px;
 right:20px;
 
@@ -587,7 +587,7 @@ display:inline-flex;
 align-items:center;
 justify-content:center;
 
-padding:6px; /* 👈 controla el borde (más pequeño = más pegado) */
+padding:6px;
 border-radius:50%;
 
 background:linear-gradient(#c6a23a,#8f6b1c);
@@ -606,6 +606,10 @@ transition:0.3s;
 
 <body>
 
+<div class="boton-musica" onclick="toggleMusica()" id="icono-musica">
+🔇
+</div>
+  
 <div id="intro">
 
 <div class="titulo-intro">¡Nos casamos!</div>
@@ -642,10 +646,6 @@ Haz click en el sobre para abrir la invitación.
 </div>
     
 <div class="hero" id="hero">
-
-<div class="boton-musica" onclick="toggleMusica()" id="icono-musica">
-🔇
-</div>
     
 <div class="texto-invitacion">
 Te invitamos a celebrar con nosotros<br>
