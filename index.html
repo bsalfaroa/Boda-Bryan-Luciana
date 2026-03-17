@@ -356,7 +356,7 @@ transform:translateY(0);
 .button{
 display:block;
 margin:20px auto;
-<!--width:260px;-->
+/* width:260px; */
 max-width: 100%;
 padding:14px;
 border-radius:30px;
@@ -977,36 +977,6 @@ window.addEventListener("blur", function(){
 // EXTRA para móviles modernos
 document.addEventListener("freeze", function () {
   document.getElementById("musica").pause()
-})
-
-let musica = document.getElementById("musica")
-
-// Detectar cuando la app pasa a segundo plano (MEJOR para móviles)
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    musica.pause()
-    document.getElementById("icono-musica").textContent = "🔇"
-  }
-})
-
-// Detecta cuando cambias de app (Android)
-window.addEventListener("pagehide", () => {
-  musica.pause()
-  document.getElementById("icono-musica").textContent = "🔇"
-})
-
-// Detecta pérdida de foco (algunos navegadores)
-window.addEventListener("blur", () => {
-  musica.pause()
-  document.getElementById("icono-musica").textContent = "🔇"
-})
-
-// 🔥 CLAVE: cuando el usuario vuelve, NO reanudar automáticamente
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    musica.pause()
-    document.getElementById("icono-musica").textContent = "🔇"
-  }
 })
 
 const musica = document.getElementById("musica")
