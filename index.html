@@ -192,6 +192,7 @@ padding:70px 20px 40px 20px;
 opacity:0;
 transform:translateY(40px);
 transition:1.5s;
+position:relative;
 }
 
 .hero.visible{
@@ -578,18 +579,15 @@ opacity:0.9;
 }
 
 .boton-musica{
-position:fixed;
-
+position:absolute;
 bottom:20px;
 right:20px;
 
-width:45px;
-height:45px;
-
-display:flex;
+display:inline-flex;
 align-items:center;
 justify-content:center;
 
+padding:6px; /* 👈 controla el borde (más pequeño = más pegado) */
 border-radius:50%;
 
 background:linear-gradient(#c6a23a,#8f6b1c);
