@@ -1008,6 +1008,19 @@ document.addEventListener("visibilitychange", () => {
     document.getElementById("icono-musica").textContent = "🔇"
   }
 })
+
+const musica = document.getElementById("musica")
+const icono = document.getElementById("icono-musica")
+
+// Cuando la música se reproduce
+musica.addEventListener("play", () => {
+  icono.textContent = "🔊"
+})
+
+// Cuando la música se pausa (CLAVE)
+musica.addEventListener("pause", () => {
+  icono.textContent = "🔇"
+})
   
 </script>
 
