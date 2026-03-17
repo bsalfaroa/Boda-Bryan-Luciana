@@ -579,26 +579,24 @@ opacity:0.9;
 }
 
 .boton-musica{
-position:fixed;   /* 👈 volvemos a fixed */
+position:fixed;
 bottom:20px;
 right:20px;
 
-display:inline-flex;
+display:flex;
 align-items:center;
 justify-content:center;
 
-padding:6px;
+padding:4px;
 border-radius:50%;
 
 background:linear-gradient(#c6a23a,#8f6b1c);
 color:white;
-font-size:20px;
+font-size:18px;
 
 cursor:pointer;
 box-shadow:0 4px 12px rgba(0,0,0,.25);
 z-index:9999;
-
-transition:0.3s;
 }
   
 </style>
@@ -789,6 +787,8 @@ Con amor, 2026
   
 document.addEventListener("DOMContentLoaded", function(){
 
+document.getElementById("icono-musica").style.display = "none"
+  
 // 🔥 SIEMPRE volver al sobre
 window.scrollTo(0,0)
 document.body.style.overflow="hidden"
@@ -825,6 +825,8 @@ document.getElementById("icono-musica").textContent = "🔇"
   
 function abrirInvitacion(){
 
+document.getElementById("icono-musica").style.display = "flex"
+  
 const intro=document.getElementById("intro")
 
 document.getElementById("sobre").classList.add("open")
