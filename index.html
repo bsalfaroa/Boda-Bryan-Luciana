@@ -604,7 +604,7 @@ transform:scale(1.05);
 <div class="titulo-intro">¡Nos casamos!</div>
 
 <div class="nombres-intro">
-Prueba 5
+Bryan & Luciana
 </div>
 
 <div class="fecha-intro">
@@ -627,7 +627,7 @@ Haz click en el sobre para abrir la invitación.
 <div class="reserva">
   Hemos reservado 
   <span class="reserva-numero">
-    <span class="numero">2</span>
+    <span class="numero" id="espacios"></span>
   </span>
   espacio(s) para ti.
 </div>
@@ -892,7 +892,29 @@ icono.textContent = "🔇"
 }
 
 }
-    
+
+/* ESPACIOS RESERVADOS DESDE EL LINK */
+
+function obtenerParametro(nombre){
+
+const urlParams = new URLSearchParams(window.location.search)
+
+return urlParams.get(nombre)
+
+}
+
+const espacios = obtenerParametro("p")
+
+if(espacios){
+
+document.getElementById("espacios").textContent = espacios
+
+}else{
+
+document.getElementById("espacios").textContent = "2"
+
+}
+  
 </script>
 
 <audio id="musica" loop preload="auto">
